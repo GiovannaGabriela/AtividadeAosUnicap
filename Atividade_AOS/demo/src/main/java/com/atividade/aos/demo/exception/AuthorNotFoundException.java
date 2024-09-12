@@ -1,5 +1,7 @@
 package com.atividade.aos.demo.exception;
 
-public class AuthorNotFoundException {
-    
+public class AuthorNotFoundException extends RuntimeException {
+    public AuthorNotFoundException(String message) {
+        super(message);
+    }
 }

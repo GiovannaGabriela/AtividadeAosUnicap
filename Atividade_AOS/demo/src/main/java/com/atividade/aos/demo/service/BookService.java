@@ -1,7 +1,8 @@
 package com.atividade.aos.demo.service;
 
-import com.example.library.model.Book;
-import com.example.library.repository.BookRepository;
+import com.atividade.aos.demo.exception.ResourceNotFoundException;
+import com.atividade.aos.demo.model.Book;
+import com.atividade.aos.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -26,4 +27,27 @@ public class BookService {
         return restTemplate.getForObject(url, String.class);
     }
 
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public Book getBookById(Long id) {
+        return bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book not found"));
+    }
+
+    public Book createBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    public Book updateBook(Long id, Book updatedBook) {
+        Book book = getBookById(id);
+        book.setTitle(updatedBook.getTitle());
+        book.setIsbn(updatedBook.getIsbn());
+        return bookRepository.save(book);
+    }
+
+    public void deleteBook(Long id) {
+        Book book = getBookById(id);
+        bookRepository.delete(book);
+    }
 }
