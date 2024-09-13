@@ -33,7 +33,7 @@ public class AuthorController {
         return authorService.createAuthor(author);
     }
 
-    // PUT - Update an author
+    //Update nos autor
     @PutMapping("/{id}")
     public Author updateAuthor(@PathVariable Long id, @RequestBody Author updatedAuthor) {
         return authorService.updateAuthor(id, updatedAuthor);
