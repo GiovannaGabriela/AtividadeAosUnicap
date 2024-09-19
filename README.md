@@ -1,6 +1,9 @@
 2024.2-MSIN - 0401-SIN1021-APLICACOES ORIENTADA A SERVICO
+
 Aluna: Giovanna Gabriela Soares de Oliveira
+
 Requisitos da atividade:
+
 Duas entidades (uma para cada componente da dupla) que se comunicam entre si
 Para cada atividade, definir o padrão arquitetural em camadas (Controller, Service, Exception, Repository, Model)
 Criar classe de configuração do Spring Boot
