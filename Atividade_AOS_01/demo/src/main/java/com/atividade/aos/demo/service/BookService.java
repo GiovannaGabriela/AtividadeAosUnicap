@@ -14,16 +14,21 @@ public class BookService {
     private final BookRepository bookRepository;
     private final RestTemplate restTemplate;
 
+    // Valor da URL da API externa e da chave de API
     @Value("${external.api.url}")
     private String externalApiUrl;
+
+    @Value("${google.books.api.key}")
+    private String apiKey;
 
     public BookService(BookRepository bookRepository, RestTemplate restTemplate) {
         this.bookRepository = bookRepository;
         this.restTemplate = restTemplate;
     }
 
+    // Método que faz a requisição à API do Google Books
     public String fetchBookInfoFromGoogle(String query) {
-        String url = externalApiUrl + "?q=" + query;
+        String url = externalApiUrl + "?q=" + query + "&key=" + apiKey;
         return restTemplate.getForObject(url, String.class);
     }
 
